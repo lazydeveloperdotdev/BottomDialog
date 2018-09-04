@@ -2,8 +2,9 @@
 Android library to display AlertDialog from the bottom
 
 **Usage**
+**1. Prompt Dialog**
 ```
-BottomDialog(this).buildAndShow("Logout?", "Do you really want to logout?", 
+BottomDialog(this).buildAndShow("Title", "Your message", 
             BottomButton("Yes", object : ClickListener {
                 override fun onClick(dialog: BottomDialog.dialogUI) {
                     //do something
@@ -15,3 +16,18 @@ BottomDialog(this).buildAndShow("Logout?", "Do you really want to logout?",
                 }
             }))
 ```
+**2. Alert Dialog**
+```
+BottomDialog(this).buildAndShow("Title", "Your message", 
+            BottomButton("OK", object : ClickListener {
+                override fun onClick(dialog: BottomDialog.dialogUI) {
+                    //do something
+                }
+            })
+```
+
+**3. Customizations:**
+- If you don't want the dialog to be dismissed automatically, pass one more ```Boolean``` parameter as ```false```
+- Methods: 
+<br />```setCancelable(Boolean)``` - dialog gets cancelled on back pressed
+<br />```setCancelableOnOutsideTouch(Boolean)``` - dialog gets cancelled if touched outside the dialog
