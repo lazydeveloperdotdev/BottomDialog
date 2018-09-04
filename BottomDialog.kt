@@ -86,7 +86,7 @@ class BottomDialog constructor(context: Context) {
         bottomSheetDialog!!.setContentView(view!!)
     }
 
-    fun buildAndShow(title: String?, message: String?, button: RajButton?) {
+    fun buildAndShow(title: String?, message: String?, button: BottomButton?) {
         if (title != null) {
             tTitle!!.visibility = View.VISIBLE
             tTitle!!.text = title
@@ -113,36 +113,8 @@ class BottomDialog constructor(context: Context) {
         bottomSheetDialog!!.show()
     }
 
-    fun buildAndShow(title: String?, message: String?, button: RajButton?, dismissOnButtonClick: Boolean) {
-        if (title != null) {
-            tTitle!!.visibility = View.VISIBLE
-            tTitle!!.text = title
-        }
 
-        if (message != null) {
-            tMessage!!.visibility = View.VISIBLE
-            tMessage!!.text = message
-        }
-
-        if (button != null) {
-            bPositive!!.visibility = View.VISIBLE
-            bPositive!!.text = button.text
-            bPositive!!.setTextColor(Color.BLACK)
-            bPositive!!.setOnClickListener {
-                if (dismissOnButtonClick) {
-                    bottomSheetDialog!!.dismiss()
-                }
-                try {
-                    button.listener!!.onClick(dialogUI())
-                } catch (e: Exception) {
-                    Log.e("CLICK", "No action")
-                }
-            }
-        }
-        bottomSheetDialog!!.show()
-    }
-
-    fun buildAndShow(title: String?, message: String?, positive: RajButton?, negative: RajButton?) {
+    fun buildAndShow(title: String?, message: String?, positive: BottomButton?, negative: BottomButton?) {
         if (title != null) {
             tTitle!!.visibility = View.VISIBLE
             tTitle!!.text = title
@@ -180,49 +152,7 @@ class BottomDialog constructor(context: Context) {
         bottomSheetDialog!!.show()
     }
 
-    fun buildAndShow(title: String?, message: String?, positive: RajButton?, negative: RajButton?, dismissOnButtonClick: Boolean) {
-        if (title != null) {
-            tTitle!!.visibility = View.VISIBLE
-            tTitle!!.text = title
-        }
-
-        if (message != null) {
-            tMessage!!.visibility = View.VISIBLE
-            tMessage!!.text = message
-        }
-
-        if (positive != null) {
-            bPositive!!.visibility = View.VISIBLE
-            bPositive!!.text = positive.text
-            bPositive!!.setOnClickListener {
-                if (dismissOnButtonClick) {
-                    bottomSheetDialog!!.dismiss()
-                }
-                try {
-                    positive.listener!!.onClick(dialogUI())
-                } catch (e: Exception) {
-                    Log.e("CLICK", "No action")
-                }
-            }
-        }
-        if (negative != null) {
-            bNegative!!.visibility = View.VISIBLE
-            bNegative!!.text = negative.text
-            bNegative!!.setOnClickListener {
-                if (dismissOnButtonClick) {
-                    bottomSheetDialog!!.dismiss()
-                }
-                try {
-                    negative.listener!!.onClick(dialogUI())
-                } catch (e: Exception) {
-                    Log.e("CLICK", "No action")
-                }
-            }
-        }
-        bottomSheetDialog!!.show()
-    }
-
-    fun setTitle(title: String?): RajDialog {
+    fun setTitle(title: String?): BottomDialog {
         if (title != null) {
             tTitle!!.visibility = View.VISIBLE
             tTitle!!.text = title
@@ -230,7 +160,7 @@ class BottomDialog constructor(context: Context) {
         return this
     }
 
-    fun setMessage(message: String?): RajDialog {
+    fun setMessage(message: String?): BottomDialog {
         if (message != null) {
             tMessage!!.visibility = View.VISIBLE
             tMessage!!.text = message
@@ -238,22 +168,22 @@ class BottomDialog constructor(context: Context) {
         return this
     }
 
-    fun setCancelable(yesNo: Boolean): RajDialog {
+
+    fun setCancelable(yesNo: Boolean): BottomDialog {
         bottomSheetDialog!!.setCancelable(yesNo)
         return this
     }
 
-    fun setCancelableOnOutsideTouch(yesNo: Boolean): RajDialog {
+    fun setCancelableOnOutsideTouch(yesNo: Boolean): BottomDialog {
         bottomSheetDialog!!.setCanceledOnTouchOutside(yesNo)
         return this
     }
-
 
     fun show() {
         bottomSheetDialog!!.show()
     }
 
-    fun setPositiveButton(button: RajButton): RajDialog {
+    fun setPositiveButton(button: BottomButton): BottomDialog {
         bPositive!!.visibility = View.VISIBLE
         bPositive!!.text = button.text
 
@@ -277,7 +207,7 @@ class BottomDialog constructor(context: Context) {
         }
     }
 
-    fun setNegativeButton(button: RajButton): RajDialog {
+    fun setNegativeButton(button: BottomButton): BottomDialog {
         bNegative!!.visibility = View.VISIBLE
         bNegative!!.text = button.text
 
@@ -293,7 +223,7 @@ class BottomDialog constructor(context: Context) {
 
 
     companion object {
-        class Button(text: String, listener: ClickListener) {
+        class BottomButton(text: String, listener: ClickListener) {
             var text: String? = text
             var listener: ClickListener? = listener
         }
