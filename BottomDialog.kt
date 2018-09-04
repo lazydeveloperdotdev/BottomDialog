@@ -14,7 +14,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 
 
-class RajDialog constructor(context: Context) {
+class BottomDialog constructor(context: Context) {
     private var bottomSheetDialog: BottomSheetDialog? = null
     private var view: LinearLayout? = null
 
@@ -293,7 +293,7 @@ class RajDialog constructor(context: Context) {
 
 
     companion object {
-        class RajButton(text: String, listener: ClickListener) {
+        class Button(text: String, listener: ClickListener) {
             var text: String? = text
             var listener: ClickListener? = listener
         }
