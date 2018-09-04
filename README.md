@@ -1,7 +1,8 @@
 # BottomDialog
 Android library to display AlertDialog from the bottom
 
-**Usage**
+<h2>Usage</h2>
+
 **1. Prompt Dialog**
 ```
 BottomDialog(this).buildAndShow("Title", "Your message", 
@@ -16,6 +17,7 @@ BottomDialog(this).buildAndShow("Title", "Your message",
                 }
             }))
 ```
+
 **2. Alert Dialog**
 ```
 BottomDialog(this).buildAndShow("Title", "Your message", 
