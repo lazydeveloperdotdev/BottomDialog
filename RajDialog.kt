@@ -113,6 +113,34 @@ class RajDialog constructor(context: Context) {
         bottomSheetDialog!!.show()
     }
 
+    fun buildAndShow(title: String?, message: String?, button: RajButton?, dismissOnButtonClick: Boolean) {
+        if (title != null) {
+            tTitle!!.visibility = View.VISIBLE
+            tTitle!!.text = title
+        }
+
+        if (message != null) {
+            tMessage!!.visibility = View.VISIBLE
+            tMessage!!.text = message
+        }
+
+        if (button != null) {
+            bPositive!!.visibility = View.VISIBLE
+            bPositive!!.text = button.text
+            bPositive!!.setTextColor(Color.BLACK)
+            bPositive!!.setOnClickListener {
+                if (dismissOnButtonClick) {
+                    bottomSheetDialog!!.dismiss()
+                }
+                try {
+                    button.listener!!.onClick(dialogUI())
+                } catch (e: Exception) {
+                    Log.e("CLICK", "No action")
+                }
+            }
+        }
+        bottomSheetDialog!!.show()
+    }
 
     fun buildAndShow(title: String?, message: String?, positive: RajButton?, negative: RajButton?) {
         if (title != null) {
@@ -152,6 +180,48 @@ class RajDialog constructor(context: Context) {
         bottomSheetDialog!!.show()
     }
 
+    fun buildAndShow(title: String?, message: String?, positive: RajButton?, negative: RajButton?, dismissOnButtonClick: Boolean) {
+        if (title != null) {
+            tTitle!!.visibility = View.VISIBLE
+            tTitle!!.text = title
+        }
+
+        if (message != null) {
+            tMessage!!.visibility = View.VISIBLE
+            tMessage!!.text = message
+        }
+
+        if (positive != null) {
+            bPositive!!.visibility = View.VISIBLE
+            bPositive!!.text = positive.text
+            bPositive!!.setOnClickListener {
+                if (dismissOnButtonClick) {
+                    bottomSheetDialog!!.dismiss()
+                }
+                try {
+                    positive.listener!!.onClick(dialogUI())
+                } catch (e: Exception) {
+                    Log.e("CLICK", "No action")
+                }
+            }
+        }
+        if (negative != null) {
+            bNegative!!.visibility = View.VISIBLE
+            bNegative!!.text = negative.text
+            bNegative!!.setOnClickListener {
+                if (dismissOnButtonClick) {
+                    bottomSheetDialog!!.dismiss()
+                }
+                try {
+                    negative.listener!!.onClick(dialogUI())
+                } catch (e: Exception) {
+                    Log.e("CLICK", "No action")
+                }
+            }
+        }
+        bottomSheetDialog!!.show()
+    }
+
     fun setTitle(title: String?): RajDialog {
         if (title != null) {
             tTitle!!.visibility = View.VISIBLE
@@ -177,6 +247,7 @@ class RajDialog constructor(context: Context) {
         bottomSheetDialog!!.setCanceledOnTouchOutside(yesNo)
         return this
     }
+
 
     fun show() {
         bottomSheetDialog!!.show()
